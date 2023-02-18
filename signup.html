@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <title>SignUp : SALESKEN</title>
+</head>
+<style>
+    form {
+        width: 30%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 2rem;
+        box-shadow: 5px 3px 10px 5px;
+    }
+
+    form div {
+        height: 50px;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    form :nth-child(1) {
+        border-bottom: 2px solid;
+    }
+
+    form div label {
+        /* border-bottom: 1px sold red; */
+    }
+
+    form input {
+        height: 20px;
+    }
+</style>
+
+<body>
+    <nav>
+        <div><a href="./index.html">Home</a></div>
+        <div><a href="./quiz.html">Quiz</a></div>
+        <div><a href="./report.html">Report</a></div>
+        <div><a href="./login.html">Login</a></div>
+        <div><a href="./signup.html">Signup</a></div>
+    </nav>
+    <div>Signup</div>
+    <form>
+        <div>
+            <h2>Signup to Quiz</h2>
+        </div>
+        <div> <label>Name :</label>
+            <input type="text" id="name" placeholder="Enter Name" />
+        </div>
+        <div> <label>Email :</label>
+            <input type="email" id="email" placeholder="Enter Email" />
+        </div>
+        <div> <label>Password :</label>
+            <input id="password" type="password" placeholder="Enter Password" />
+        </div>
+        <div>
+            <input type="submit" value="Signup">
+        </div>
+    </form>
+</body>
+
+</html><script>
+    let form = document.querySelector('form');
+    form.addEventListener('submit', handleSignup);
+
+    function handleSignup(event){
+     event.preventDefault();
+     let name=document.getElementById('name').value
+     let email=document.getElementById('email').value
+     let password=document.getElementById('password').value
+     if(name===""||email===""||password===""){
+        alert("please fill all details first!!")
+     }
+     else{
+         let User= {
+             name:name,
+             email:email,
+             password:password
+         };
+         localStorage.setItem("SignedUser",JSON.stringify(User))
+         alert(`${name} User signed up successfully!!` );
+         name=""
+         email=""
+         password=""
+         window.location.href="./login.html";
+     }
+ }
+</script>

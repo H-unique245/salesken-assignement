@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <title>Login : SALESKEN</title>
+</head>
+<style>
+    form{
+        width: 30%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 2rem;
+        box-shadow:5px 3px 10px 5px;
+    }
+    form div{
+        height: 50px;
+        text-align: center;
+        display:flex;
+        gap: 10px;
+        align-content: center;
+        align-items: center;
+        justify-content:center;
+    }
+    form :nth-child(1){
+        border-bottom: 2px solid;
+    }
+    form div label{
+        /* border-bottom: 1px sold red; */
+    }
+    form input{
+        height: 20px;
+    }
+</style>
+<body>
+    <nav>
+        <div><a href="./index.html">Home</a></div>
+        <div><a href="./quiz.html">Quiz</a></div>
+        <div><a href="./report.html">Report</a></div>
+        <div><a href="./login.html">Login</a></div>
+        <div><a href="./signup.html">Signup</a></div>
+    </nav>
+    <div>Login Page</div>
+    <form >
+        <div><h2>Login to Quiz</h2></div>
+        <div> <label>Email :</label>
+       <input type="text" id="email"  placeholder="Enter Email" />
+    </div>
+     <div> <label>Password :</label>
+        <input id="password" type="password" placeholder="Enter Password" />
+     </div>
+     <div>
+        <input type="submit" value="Login">
+     </div>
+    </form>
+</body>
+</html>
+<script>
+    let form = document.querySelector('form');
+    form.addEventListener('submit', handleLogin);
+
+    let user= JSON.parse(localStorage.getItem("SignedUser"));
+    function handleLogin(event){
+     event.preventDefault();
+     let email=document.getElementById('email').value
+     let password=document.getElementById('password').value
+ if(user===null || user.email!==email ){
+    alert("User is not registered with this email \n Please Sign Up first!!")
+    window.location.href="./signup.html"
+ }
+     else if(user.email===email && user.password===password){
+    alert("login Sucess!!");
+    let LoggedUser={
+        name: user.name,
+        email: user.email,
+        password:user.password,
+        quiz:[]
+    }
+    localStorage.setItem("loggedUser",JSON.stringify(LoggedUser));
+    window.location.href="./quiz.html";
+ }
+ else if(user.email===email && user.password!==password) {
+    alert("Please Enter correct Passord")
+ }
+ }
+</script>
