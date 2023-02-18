@@ -1,0 +1,19 @@
+h1,h2{
+    text-align: center;
+}
+.resultCard{
+border: 1px solid;
+padding: 10px;
+margin: 10px;
+}
+#score{
+font-size: 40px;
+font-weight: 600;
+text-decoration: underline;
+text-align: center;
+}
+#result{
+display: flex;
+justify-content: space-evenly;
+
+}

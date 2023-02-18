@@ -5,36 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/login.css" />
     <title>Login : SALESKEN</title>
 </head>
 <style>
-    form{
-        width: 30%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 2rem;
-        box-shadow:5px 3px 10px 5px;
-    }
-    form div{
-        height: 50px;
-        text-align: center;
-        display:flex;
-        gap: 10px;
-        align-content: center;
-        align-items: center;
-        justify-content:center;
-    }
-    form :nth-child(1){
-        border-bottom: 2px solid;
-    }
-    form div label{
-        /* border-bottom: 1px sold red; */
-    }
-    form input{
-        height: 20px;
-    }
+    
 </style>
 <body>
     <nav>
@@ -59,32 +34,4 @@
     </form>
 </body>
 </html>
-<script>
-    let form = document.querySelector('form');
-    form.addEventListener('submit', handleLogin);
-
-    let user= JSON.parse(localStorage.getItem("SignedUser"));
-    function handleLogin(event){
-     event.preventDefault();
-     let email=document.getElementById('email').value
-     let password=document.getElementById('password').value
- if(user===null || user.email!==email ){
-    alert("User is not registered with this email \n Please Sign Up first!!")
-    window.location.href="./signup.html"
- }
-     else if(user.email===email && user.password===password){
-    alert("login Sucess!!");
-    let LoggedUser={
-        name: user.name,
-        email: user.email,
-        password:user.password,
-        quiz:[]
-    }
-    localStorage.setItem("loggedUser",JSON.stringify(LoggedUser));
-    window.location.href="./quiz.html";
- }
- else if(user.email===email && user.password!==password) {
-    alert("Please Enter correct Passord")
- }
- }
-</script>
+<script src="../JS/login.js"></script>

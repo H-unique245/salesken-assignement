@@ -5,14 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/report.css" />
     <title>Report : SALESKEN</title>
 </head>
-<style>
-    h2{
-        text-align: center;
-    }
-   
-</style>
 <body>
     <nav>
         <div><a href="./index.html">Home</a></div>
@@ -21,68 +16,18 @@
         <div><a href="./login.html">Login</a></div>
         <div><a href="./signup.html">Signup</a></div>
     </nav>
-    <div><h2>Report</h2></div>
+    <div><h1>Report</h1></div>
     <div id="score"></div>
     <div id="result">
 
         <div id="solution">
-            <h4>Attempted Questions</h4>
+            <h2>Attempted Questions</h2>
         </div>
     <div id="unsolved">
-        <h4>UnSolved Questions</h4>
+        <h2>UnSolved Questions</h2>
     </div>
 </div>
 
 </body>
 </html>
-<script type="module">
-     import {data} from "../data/data.js"
-    let result= JSON.parse(localStorage.getItem("QuizSol"));
-     let totalScore= data.length;
-    let FinalScore= result.reduce((ac,el)=>ac+el.score,0);
-    // console.log(FinalScore)
-  let Score=  document.getElementById("score")
-  Score.innerText= `Your Score is : ${FinalScore}/${totalScore}`
- let UnAttempt=  [];
- let check= result.filter((el)=>el.userAns==="");
- UnAttempt.push(check)
-console.log("data",UnAttempt);
-
-function AppendData(){
-    
-}
- result.map((sol,i)=>{
-    if(sol.userAns!==""){
-        let res_div=document.createElement("div");
-        res_div.setAttribute("class","resultCard")
-        let question=document.createElement("p");
-        question.innerText= `${i+1}. ${sol.question}`
-        let correct_answer=document.createElement("p");
-        correct_answer.innerText= "Correct Answer :"+ sol.correct_answer;
-        let score=document.createElement("p");
-        score.innerText= "Score:"+ sol.score;
-
-        let User_Ans=document.createElement("p");
-        User_Ans.innerText= "Your Answer :"+  sol.userAns;
-
-        res_div.append(question,correct_answer,score,User_Ans)
-        document.getElementById("solution").append(res_div)
-    }
-    else{
-        let res_div=document.createElement("div");
-        res_div.setAttribute("class","resultCard")
-        let question=document.createElement("p");
-        question.innerText= `${i+1}. ${sol.question}`
-        let correct_answer=document.createElement("p");
-        correct_answer.innerText= "Correct Answer :"+ sol.correct_answer;
-        let score=document.createElement("p");
-        score.innerText= "Score:"+ sol.score;
-
-        let User_Ans=document.createElement("p");
-        User_Ans.innerText= "Your Answer :"+  sol.userAns;
-
-        res_div.append(question,correct_answer,score,User_Ans)
-        document.getElementById("unsolved").append(res_div)
-    }
-    })
-</script>
+<script type="module" src="../JS/report.js"></script>

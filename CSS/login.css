@@ -1,0 +1,25 @@
+form{
+    width: 30%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2rem;
+    box-shadow:5px 3px 10px 5px;
+}
+form div{
+    height: 50px;
+    text-align: center;
+    display:flex;
+    gap: 10px;
+    align-content: center;
+    align-items: center;
+    justify-content:center;
+}
+form :nth-child(1){
+    border-bottom: 2px solid;
+}
+
+form input{
+    height: 20px;
+}

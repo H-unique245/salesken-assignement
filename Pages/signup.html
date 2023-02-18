@@ -6,40 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/signup.css" />
     <title>SignUp : SALESKEN</title>
 </head>
 <style>
-    form {
-        width: 30%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 2rem;
-        box-shadow: 5px 3px 10px 5px;
-    }
-
-    form div {
-        height: 50px;
-        text-align: center;
-        display: flex;
-        gap: 10px;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-    }
-
-    form :nth-child(1) {
-        border-bottom: 2px solid;
-    }
-
-    form div label {
-        /* border-bottom: 1px sold red; */
-    }
-
-    form input {
-        height: 20px;
-    }
+   
 </style>
 
 <body>
@@ -70,30 +41,4 @@
     </form>
 </body>
 
-</html><script>
-    let form = document.querySelector('form');
-    form.addEventListener('submit', handleSignup);
-
-    function handleSignup(event){
-     event.preventDefault();
-     let name=document.getElementById('name').value
-     let email=document.getElementById('email').value
-     let password=document.getElementById('password').value
-     if(name===""||email===""||password===""){
-        alert("please fill all details first!!")
-     }
-     else{
-         let User= {
-             name:name,
-             email:email,
-             password:password
-         };
-         localStorage.setItem("SignedUser",JSON.stringify(User))
-         alert(`${name} User signed up successfully!!` );
-         name=""
-         email=""
-         password=""
-         window.location.href="./login.html";
-     }
- }
-</script>
+</html><script src="../JS/signup.js"></script>
