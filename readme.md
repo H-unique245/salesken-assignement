@@ -15,7 +15,7 @@ For each user logged in, Store Username & password in local storage of the page 
 3. Run index.html on your system
 
 ### You can also check live 
-[See Live]("");
+[See Live]("https://superb-shortbread-5f553e.netlify.app/");
 
 - #### Task Deadine : 24 hours
 
@@ -29,14 +29,14 @@ For each user logged in, Store Username & password in local storage of the page 
 #### Signup page
 - User need to sign up first before going to login
 - User details will be saved to localStorage
-<img src="" alt="Signup page">
+<img src="https://i.imgur.com/JiVsuV8.png" alt="Signup page">
 
 
 
 #### Login page
 - User need to sign up first before going to Home page, Quiz Page
 - User details will be saved to localStorage
-<img src="" alt="login page">
+<img src="https://i.imgur.com/wjeSrVu.png" alt="login page">
 
 
 
@@ -47,7 +47,7 @@ For each user logged in, Store Username & password in local storage of the page 
 - if the user is not selecting any option, user will not getting score for that question
 -  All details(question, answer) are stored in local storage
 -  After the last question user can see the report on next page
-<img src="" alt="Quiz page">
+<img src="https://i.imgur.com/ZwAecHN.png" alt="Quiz page">
 
 
 
@@ -56,6 +56,6 @@ For each user logged in, Store Username & password in local storage of the page 
 -  In this page use can see details report card of the quiz
 - User can see the score
 - User also can see the attempted and unAttempted questions differently
-<img src="" alt="Reports page">
+<img src="https://i.imgur.com/UBgGNfR.png" alt="Reports page">
 
 

@@ -1,6 +1,6 @@
 let user= JSON.parse(localStorage.getItem("loggedUser"));
     if(user===null){
-        window.location.href="./login.html"
+        window.location.href="./Pages/login.html"
     }
     let userData= document.getElementById("user");
     userData.setAttribute("class","userDetails")
@@ -13,5 +13,5 @@ let user= JSON.parse(localStorage.getItem("loggedUser"));
     
    let start=  document.querySelector("button")
    start.addEventListener("click",()=>{
-    window.location.href= "./quiz.html"
+    window.location.href= "./Pages/quiz.html"
    })

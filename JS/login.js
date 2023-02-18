@@ -19,7 +19,7 @@ let LoggedUser={
     quiz:[]
 }
 localStorage.setItem("loggedUser",JSON.stringify(LoggedUser));
-window.location.href="./index.html";
+window.location.href="../index.html";
 }
 else if(user.email===email && user.password!==password) {
 alert("Please Enter correct Passord")
