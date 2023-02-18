@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/common.css" />
+    <title>Quiz : SALESKEN</title>
+</head>
+
+<body>
+    <nav>
+        <div><a href="./index.html">Home</a></div>
+        <div><a href="./quiz.html">Quiz</a></div>
+        <div><a href="./report.html">Report</a></div>
+        <div><a href="./login.html">Login</a></div>
+        <div><a href="./signup.html">Signup</a></div>
+    </nav>
+    <div><h2>Quiz</h2></div>
+   <div id="container"></div>
+   <button id="next">Next</button>
+<!-- 
+   <div>
+    <p>Question is here</p>
+    
+    <label><input type="radio" name="option_check" id="option1" value="check1">check1</label>
+    <label><input type="radio" name="option_check" id="option1" value="check2">check2</label>
+    <label><input type="radio" name="option_check" id="option1" value="check3">check3</label>
+    <label><input type="radio" name="option_check" id="option1" value="check4">check4</label>
+   </div> -->
+</body>
+</html>
+<script type="module">
+    import {data} from "../data/data.js"
+// let quiz= importScripts("./data/data.json");
+console.log("hello",data);
+// appendQuiz(data);
+let check_arr=[];
+let container= document.getElementById("container");
+
+let i=0
+appendQuestion()
+// i++;
+let nextButton= document.getElementById("next");
+nextButton.addEventListener("click",nextquestion,Save)
+function nextquestion () {
+  if (i ===data.length-1 ) {
+  document.getElementById("container").innerHTML=null
+    let result= document.createElement("button")
+    result.innerText=" Check Result";
+    result.addEventListener("click",()=>{
+        window.location.href="./report.html"
+    })
+    nextButton.innerHTML=null
+    document.getElementById("container").append(result)
+return
+  }
+  i++;
+  document.getElementById("container").innerHTML=null
+  appendQuestion()
+}
+
+function appendQuestion(){
+    let firstques = data[i];
+    console.log("options: ",i,firstques.options);
+    //storing unattempted question
+    Save(firstques,"")
+    let options= document.createElement("div")
+let question= document.createElement("div")
+question.innerText = `${firstques.id}.   ${firstques.question}`;
+//optionn1
+let option1= document.createElement("input");
+option1.type="radio"
+option1.name="optionClick"
+option1.value=firstques.options[0];
+option1.addEventListener('change', () => {
+    if (option1.checked) {
+      console.log(`${option1.value} is checked`);
+      Save(firstques,option1.value)
+    }
+    
+  });
+let option1_label= document.createElement("label");
+option1_label.name=firstques.options[0];
+option1_label.textContent=firstques.options[0];
+
+//optionn2
+let option2= document.createElement("input");
+option2.type="radio"
+option2.name="optionClick"
+option2.value=firstques.options[1];
+option2.addEventListener('change', () => {
+    if (option2.checked) {
+      console.log(`${option2.value} is checked`);
+    //   correct_answer
+      Save(firstques,option2.value)
+    }
+    else{
+      Save(firstques,"")
+    }
+  });
+
+let option2_label= document.createElement("label");
+option2_label.for=firstques.options[1];
+option2_label.textContent=firstques.options[1];
+
+//optionn3
+let option3= document.createElement("input");
+option3.type="radio"
+option3.name="optionClick"
+option3.value=firstques.options[2];
+option3.addEventListener('change', () => {
+    if (option3.checked) {
+      console.log(`${option3.value} is checked`);
+      Save(firstques,option3.value)
+
+    }else{
+      Save(firstques,"")
+    }
+  });
+
+let option3_label= document.createElement("label");
+option3_label.for=firstques.options[2];
+option3_label.textContent=firstques.options[2];
+
+//optionn4
+let option4= document.createElement("input");
+option4.type="radio"
+option4.name="optionClick"
+option4.value=firstques.options[3];
+option4.addEventListener('change', () => {
+    if (option4.checked) {
+      console.log(`${option4.value} is checked`);
+      Save(firstques,option4.value)
+
+    }
+    else{
+    }
+});
+
+
+let option4_label= document.createElement("label");
+option4_label.for=firstques.options[3];
+option4_label.textContent=firstques.options[3];
+
+options.append(option1,option1_label,option2,option2_label,option3,option3_label,option4,option4_label);
+
+document.getElementById("container").append(question,options);
+
+}
+
+
+function Save(data,answer){
+let QuizSol= JSON.parse(localStorage.getItem("QuizSol"))|| [];
+    let user_ans={};
+ console.log(data.correct_answer)
+ console.log(answer)
+let present= QuizSol.filter((el)=> el.id===data.id);
+//  if()
+ if(data.correct_answer===answer){
+    console.log("correct")
+    user_ans= {...data,score:1,userAns:answer};
+    if(present.length===0){
+        QuizSol.push(user_ans);
+        localStorage.setItem("QuizSol",JSON.stringify(QuizSol));
+    }
+    else{
+        present[0].userAns=answer;
+        QuizSol.map(el=>{
+            if(el.id===present[0].id){
+                if(el.correct_answer===present[0].userAns){
+                el.userAns=present[0].userAns; 
+                el.score=1    
+                }
+                else{
+                    el.userAns=present[0].userAns;     
+                    el.score=0
+                }
+            }
+        })
+        localStorage.setItem("QuizSol",JSON.stringify(QuizSol));
+
+    }
+}
+else if(data.correct_answer!==answer || answer=="" ){
+    console.log("chek",present);
+    // alert("already")
+    user_ans= {...data,score:0,userAns:answer};
+    if(present.length===0){
+        QuizSol.push(user_ans);
+        localStorage.setItem("QuizSol",JSON.stringify(QuizSol));
+    }
+}
+
+}
+</script>
